@@ -1,0 +1,69 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Acerca de {% endblock %}
+
+{% load static %}
+
+{% block image-header %} about {% endblock %}
+
+{% block title-header %} 
+<div class="col-12 titulos">
+    <div>
+        <h1 class="display-4 fw-bold">Andres Galarza</h1>
+    </div>
+    <div>
+        <h3 class="fs-2">Fullstack Developer & Data Scientist</h3>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="row d-flex">
+    <div class="col-4 offset-md-auto">
+        <img class="img-fluid img-thumbnail img-circle img-perfil " src={% static 'core/img/foto_facebook.jpg' %} alt="">
+    </div>
+    <div class="col-6">
+        <h4 class="fw-lighter fst-italic px-5">VICTOR ANDRES GALARZA ORTIZ</h4>
+        <p>Licenciado en Informatica, Magister en Administración de Empresas con especialidad en Gestión de Tecnologías de la Información.</p>
+        <p>Estudios de Post Grado en la Universidad de Lovaina Belgica.</p>
+    </div>
+</div> 
+
+<div class="row d-flex pt-5">
+    <div class="col-12">
+        <h2 class="fw-bold">Formación Académica</h2>
+        {% for course in courses %}
+
+        <h3>{{ course.title }}</h3>
+        <p><strong>Título obtenido:</strong> {{ course.degree_title }}</p>
+        <p><strong>Descripción:</strong> {{ course.description }} </p>
+
+        <hr>
+        {% endfor %}
+
+        <br>
+        <h2 class="fw-bold">Conocimientos</h2>
+        <section class="skills" id="skills">
+            <div class="skills__container" id="skills">
+
+                {% for skill in skills %}
+                <div class="card__skills">
+                    <div class="skill__thumbnail">
+                        <img class="skill__logo" src={{ skill.image.url }} alt="html5">
+                    </div>
+
+                    <div class="skill__texto">
+                        <p class="skill__titulo">{{ skill.title }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </section>
+    </section>
+    </div>
+
+</div>
+
+{% endblock %}
